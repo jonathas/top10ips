@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Parsing Apache's log file</title>
+    <script type="text/javascript" src="file_handler.js"></script>
+    <script type="text/javascript">
+        document.onreadystatechange = function () {
+            if (document.readyState == "complete") {
+                var entire_file = read_file("../apache.log");
+
+                var lines = entire_file.split("\n");
+
+                var ip_list = sort(parse_lines(lines));
+
+                draw_table(ip_list);
+            }
+         }
+
+    </script>
+</head>
+<body>
+    <table id="output">
+    </table>
+</body>
+</html>
